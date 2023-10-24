@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"[]>
+<hibernate-mapping package="org.dddml.clm.domain.tagpair">
+  <class name="AbstractTagPairEvent" table="tag_pair_event" abstract="true">
+    <composite-id name="tagPairEventId" class="org.dddml.clm.domain.tagpair.TagPairEventId">
+      <key-property name="tagPairIdA">
+        <column name="TAG_A_ID" length="12" />
+      </key-property>
+      <key-property name="tagPairIdB">
+        <column name="TAG_B_ID" length="12" />
+      </key-property>
+      <key-property name="version">
+        <column name="version" />
+      </key-property>
+    </composite-id>
+    <discriminator column="event_type" type="string" />
+    <property name="createdBy" column="created_by" />
+    <property name="createdAt" column="created_at" />
+    <property name="commandId" column="command_id" />
+    <subclass name="AbstractTagPairEvent$AbstractTagPairStateEvent" abstract="true">
+      <property name="description">
+        <column name="description" length="255" />
+      </property>
+      <property name="active">
+        <column name="active" />
+      </property>
+      <subclass name="AbstractTagPairEvent$SimpleTagPairStateCreated" discriminator-value="Created"></subclass>
+      <subclass name="AbstractTagPairEvent$SimpleTagPairStateMergePatched" discriminator-value="MergePatched">
+        <property name="isPropertyDescriptionRemoved" column="is_property_description_removed" />
+        <property name="isPropertyActiveRemoved" column="is_property_active_removed" />
+      </subclass>
+      <subclass name="AbstractTagPairEvent$SimpleTagPairStateDeleted" discriminator-value="Deleted"></subclass>
+    </subclass>
+  </class>
+</hibernate-mapping>

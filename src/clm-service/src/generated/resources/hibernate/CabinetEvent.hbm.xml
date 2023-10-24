@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"[]>
+<hibernate-mapping package="org.dddml.clm.domain.cabinet">
+  <class name="AbstractCabinetEvent" table="cabinet_event" abstract="true">
+    <composite-id name="cabinetEventId" class="org.dddml.clm.domain.cabinet.CabinetEventId">
+      <key-property name="cabinetId">
+        <column name="cabinet_id" length="50" />
+      </key-property>
+      <key-property name="version">
+        <column name="version" />
+      </key-property>
+    </composite-id>
+    <discriminator column="event_type" type="string" />
+    <property name="createdBy" column="created_by" />
+    <property name="createdAt" column="created_at" />
+    <property name="commandId" column="command_id" />
+    <subclass name="AbstractCabinetEvent$AbstractCabinetStateEvent" abstract="true">
+      <property name="description">
+        <column name="description" length="255" />
+      </property>
+      <property name="active">
+        <column name="active" />
+      </property>
+      <subclass name="AbstractCabinetEvent$SimpleCabinetStateCreated" discriminator-value="Created"></subclass>
+      <subclass name="AbstractCabinetEvent$SimpleCabinetStateMergePatched" discriminator-value="MergePatched">
+        <property name="isPropertyDescriptionRemoved" column="is_property_description_removed" />
+        <property name="isPropertyActiveRemoved" column="is_property_active_removed" />
+      </subclass>
+      <subclass name="AbstractCabinetEvent$SimpleCabinetStateDeleted" discriminator-value="Deleted"></subclass>
+    </subclass>
+  </class>
+</hibernate-mapping>

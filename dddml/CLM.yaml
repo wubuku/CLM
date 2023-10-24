@@ -1,0 +1,106 @@
+configuration:
+  sequenceNumber: 10
+  boundedContextName: "Dddml.Clm"
+  # defaultModule:
+  #   name: "Dddml.Clm"
+  isSurrogateIdMandatory: false
+  metadata:
+    # Disable automatically generating Create, Update, Delete commands for the backend service
+    AutoGeneratingCrUDCommandsDisabled: false
+  java:
+    boundedContextPackage: "org.dddml.clm"
+    specializationPackage: "org.dddml.clm.specialization"
+  aggregateEventVersionProperty:
+    name: Version
+    type: long
+  defaultReservedProperties:
+    active: Active
+    createdBy: CreatedBy
+    createdAt: CreatedAt
+    updatedBy: UpdatedBy
+    updatedAt: UpdatedAt
+    deleted: Deleted
+    version: Version
+
+aggregates:
+  Tag:
+    metadata:
+      #PersistingStateEventRemovedPropertiesAsSet: true
+      CreationWithoutIdEnabled: true
+      HttpPostCreationEnabled: true
+      GeneratingAbstractIdGenerator: true
+    id:
+      name: TagId
+      type: string
+      length: 12
+      # 在文档目录中有一个生成 12 位 Id 的示例
+    properties:
+      Status:
+        type: int
+        # 注意，在使用新生成的标签 Id 初始化标签（EPC）时，应该设置其状态来“锁定”这条记录，以防止它被其他人使用。
+
+  TagPair:
+    id:
+      name: TagPairId
+      type: TagIdPair
+      columnNames:
+        - TAG_A_ID
+        - TAG_B_ID
+    properties:
+      Description:
+        type: string
+        length: 255
+
+  Cabinet:
+    id:
+      name: CabinetId
+      type: string
+      length: 50
+    properties:
+      Description:
+        type: string
+        length: 255
+
+  Device:
+    id:
+      name: DeviceId
+      type: string
+      length: 50
+    properties:
+      CabinetId:
+        type: string
+        length: 50
+      Description:
+        type: string
+        length: 255
+
+  TagDeviceAssociation:
+    id:
+      name: TagDeviceAssociationId
+      type: TagDeviceAssociationId
+      columnNames:
+        - TAG_ID
+        - DEVICE_ID
+        - PORT_NUMBER
+
+valueObjects:
+  TagIdPair:
+    # 构造它的时候，注意让 A 总是小于 B
+    properties:
+      A:
+        type: string
+        length: 12
+      B:
+        type: string
+        length: 12
+
+  TagDeviceAssociationId:
+    properties:
+      TagId:
+        type: string
+        length: 12
+      DeviceId:
+        type: string
+        length: 50
+      PortNumber:
+        type: int

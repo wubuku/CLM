@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"[]>
+<hibernate-mapping package="org.dddml.clm.domain.tag">
+  <class name="AbstractTagEvent" table="tag_event" abstract="true">
+    <composite-id name="tagEventId" class="org.dddml.clm.domain.tag.TagEventId">
+      <key-property name="tagId">
+        <column name="tag_id" length="12" />
+      </key-property>
+      <key-property name="version">
+        <column name="version" />
+      </key-property>
+    </composite-id>
+    <discriminator column="event_type" type="string" />
+    <property name="createdBy" column="created_by" />
+    <property name="createdAt" column="created_at" />
+    <property name="commandId" column="command_id" />
+    <subclass name="AbstractTagEvent$AbstractTagStateEvent" abstract="true">
+      <property name="status">
+        <column name="status" />
+      </property>
+      <property name="active">
+        <column name="active" />
+      </property>
+      <subclass name="AbstractTagEvent$SimpleTagStateCreated" discriminator-value="Created"></subclass>
+      <subclass name="AbstractTagEvent$SimpleTagStateMergePatched" discriminator-value="MergePatched">
+        <property name="isPropertyStatusRemoved" column="is_property_status_removed" />
+        <property name="isPropertyActiveRemoved" column="is_property_active_removed" />
+      </subclass>
+      <subclass name="AbstractTagEvent$SimpleTagStateDeleted" discriminator-value="Deleted"></subclass>
+    </subclass>
+  </class>
+</hibernate-mapping>

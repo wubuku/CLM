@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"[]>
+<hibernate-mapping package="org.dddml.clm.domain.device">
+  <class name="AbstractDeviceEvent" table="device_event" abstract="true">
+    <composite-id name="deviceEventId" class="org.dddml.clm.domain.device.DeviceEventId">
+      <key-property name="deviceId">
+        <column name="device_id" length="50" />
+      </key-property>
+      <key-property name="version">
+        <column name="version" />
+      </key-property>
+    </composite-id>
+    <discriminator column="event_type" type="string" />
+    <property name="createdBy" column="created_by" />
+    <property name="createdAt" column="created_at" />
+    <property name="commandId" column="command_id" />
+    <subclass name="AbstractDeviceEvent$AbstractDeviceStateEvent" abstract="true">
+      <property name="cabinetId">
+        <column name="cabinet_id" length="50" />
+      </property>
+      <property name="description">
+        <column name="description" length="255" />
+      </property>
+      <property name="active">
+        <column name="active" />
+      </property>
+      <subclass name="AbstractDeviceEvent$SimpleDeviceStateCreated" discriminator-value="Created"></subclass>
+      <subclass name="AbstractDeviceEvent$SimpleDeviceStateMergePatched" discriminator-value="MergePatched">
+        <property name="isPropertyCabinetIdRemoved" column="is_property_cabinet_id_removed" />
+        <property name="isPropertyDescriptionRemoved" column="is_property_description_removed" />
+        <property name="isPropertyActiveRemoved" column="is_property_active_removed" />
+      </subclass>
+      <subclass name="AbstractDeviceEvent$SimpleDeviceStateDeleted" discriminator-value="Deleted"></subclass>
+    </subclass>
+  </class>
+</hibernate-mapping>

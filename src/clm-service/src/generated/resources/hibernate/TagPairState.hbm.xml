@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"[]>
+<hibernate-mapping package="org.dddml.clm.domain.tagpair">
+  <class name="org.dddml.clm.domain.tagpair.AbstractTagPairState$SimpleTagPairState" table="tag_pair">
+    <composite-id name="tagPairId" class="org.dddml.clm.domain.TagIdPair">
+      <key-property name="a">
+        <column name="TAG_A_ID" length="12" />
+      </key-property>
+      <key-property name="b">
+        <column name="TAG_B_ID" length="12" />
+      </key-property>
+    </composite-id>
+    <version name="version" column="version" type="long" />
+    <property name="description">
+      <column name="description" length="255" />
+    </property>
+    <property name="createdBy">
+      <column name="created_by" />
+    </property>
+    <property name="updatedBy">
+      <column name="updated_by" />
+    </property>
+    <property name="active">
+      <column name="active" />
+    </property>
+    <property name="deleted">
+      <column name="deleted" />
+    </property>
+    <property name="createdAt" column="created_at" />
+    <property name="updatedAt" column="updated_at" />
+  </class>
+</hibernate-mapping>
