@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.dddml.support.criterion.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.device.*;
@@ -320,7 +320,7 @@ public class DeviceResource {
  
     public static class DeviceResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String deviceId, DeviceCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String deviceId, org.dddml.clm.domain.device.DeviceCommand value) {
             String idObj = deviceId;
             if (value.getDeviceId() == null) {
                 value.setDeviceId(idObj);

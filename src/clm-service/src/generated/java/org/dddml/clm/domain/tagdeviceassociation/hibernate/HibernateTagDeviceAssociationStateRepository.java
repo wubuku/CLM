@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagdeviceassociation.hibernate;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
 //import org.hibernate.criterion.Order;
@@ -78,7 +78,7 @@ public class HibernateTagDeviceAssociationStateRepository implements TagDeviceAs
         TagDeviceAssociationState persistent = getCurrentSession().get(AbstractTagDeviceAssociationState.SimpleTagDeviceAssociationState.class, detached.getTagDeviceAssociationId());
         if (persistent != null) {
             merge(persistent, detached);
-            getCurrentSession().merge(detached);
+            getCurrentSession().save(persistent);
         } else {
             getCurrentSession().save(detached);
         }
@@ -86,7 +86,7 @@ public class HibernateTagDeviceAssociationStateRepository implements TagDeviceAs
     }
 
     private void merge(TagDeviceAssociationState persistent, TagDeviceAssociationState detached) {
-        ((TagDeviceAssociationState.MutableTagDeviceAssociationState) detached).setVersion(persistent.getVersion());
+        ((AbstractTagDeviceAssociationState) persistent).merge(detached);
     }
 
 }

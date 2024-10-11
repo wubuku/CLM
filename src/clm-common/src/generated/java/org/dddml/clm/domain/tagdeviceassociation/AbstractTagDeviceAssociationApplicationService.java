@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.function.Consumer;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 
 public abstract class AbstractTagDeviceAssociationApplicationService implements TagDeviceAssociationApplicationService {

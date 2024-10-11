@@ -5,7 +5,7 @@
 
 package org.dddml.clm.domain.cabinet;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 
 public class CreateOrMergePatchCabinetDto extends AbstractCabinetCommandDto implements CabinetCommand.CreateOrMergePatchCabinet {

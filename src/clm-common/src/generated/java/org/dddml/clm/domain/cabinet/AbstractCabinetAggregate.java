@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.cabinet;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.*;
 
@@ -60,7 +60,7 @@ public abstract class AbstractCabinetAggregate extends AbstractAggregate impleme
         e.setActive(c.getActive());
         ((AbstractCabinetEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -73,7 +73,7 @@ public abstract class AbstractCabinetAggregate extends AbstractAggregate impleme
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractCabinetEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -82,7 +82,7 @@ public abstract class AbstractCabinetAggregate extends AbstractAggregate impleme
         CabinetEvent.CabinetStateDeleted e = newCabinetStateDeleted(stateEventId);
         ((AbstractCabinetEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -94,7 +94,7 @@ public abstract class AbstractCabinetAggregate extends AbstractAggregate impleme
         CabinetEvent.CabinetStateCreated e = newCabinetStateCreated(stateEventId);
         ((AbstractCabinetEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -103,7 +103,7 @@ public abstract class AbstractCabinetAggregate extends AbstractAggregate impleme
         CabinetEvent.CabinetStateMergePatched e = newCabinetStateMergePatched(stateEventId);
         ((AbstractCabinetEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -112,7 +112,7 @@ public abstract class AbstractCabinetAggregate extends AbstractAggregate impleme
         CabinetEvent.CabinetStateDeleted e = newCabinetStateDeleted(stateEventId);
         ((AbstractCabinetEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 

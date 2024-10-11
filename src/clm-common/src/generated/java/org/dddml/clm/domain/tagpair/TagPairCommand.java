@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagpair;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.Command;
 import org.dddml.clm.specialization.DomainError;
 

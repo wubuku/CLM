@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagpair.hibernate;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
 //import org.hibernate.criterion.Order;
@@ -78,7 +78,7 @@ public class HibernateTagPairStateRepository implements TagPairStateRepository {
         TagPairState persistent = getCurrentSession().get(AbstractTagPairState.SimpleTagPairState.class, detached.getTagPairId());
         if (persistent != null) {
             merge(persistent, detached);
-            getCurrentSession().merge(detached);
+            getCurrentSession().save(persistent);
         } else {
             getCurrentSession().save(detached);
         }
@@ -86,7 +86,7 @@ public class HibernateTagPairStateRepository implements TagPairStateRepository {
     }
 
     private void merge(TagPairState persistent, TagPairState detached) {
-        ((TagPairState.MutableTagPairState) detached).setVersion(persistent.getVersion());
+        ((AbstractTagPairState) persistent).merge(detached);
     }
 
 }

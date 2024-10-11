@@ -5,7 +5,7 @@
 
 package org.dddml.clm.domain.tag;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 
 public class CreateOrMergePatchTagDto extends AbstractTagCommandDto implements TagCommand.CreateOrMergePatchTag {

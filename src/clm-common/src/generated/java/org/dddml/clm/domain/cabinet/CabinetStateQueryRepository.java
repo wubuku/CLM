@@ -8,7 +8,7 @@ package org.dddml.clm.domain.cabinet;
 import java.util.Map;
 import java.util.List;
 import org.dddml.support.criterion.Criterion;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 
 public interface CabinetStateQueryRepository {

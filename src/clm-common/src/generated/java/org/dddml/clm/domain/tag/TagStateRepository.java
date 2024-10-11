@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tag;
 
 import java.util.*;
 import org.dddml.support.criterion.Criterion;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 
 public interface TagStateRepository {

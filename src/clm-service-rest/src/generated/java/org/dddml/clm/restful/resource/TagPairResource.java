@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.dddml.support.criterion.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.tagpair.*;
 import static org.dddml.clm.domain.meta.M.*;
@@ -325,7 +325,7 @@ public class TagPairResource {
             return formatter.parse(idString);
         }
 
-        public static void setNullIdOrThrowOnInconsistentIds(String tagPairId, TagPairCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String tagPairId, org.dddml.clm.domain.tagpair.TagPairCommand value) {
             TagIdPair idObj = parseIdString(tagPairId);
             if (value.getTagPairId() == null) {
                 value.setTagPairId(idObj);

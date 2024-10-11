@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.dddml.support.criterion.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.cabinet.*;
@@ -320,7 +320,7 @@ public class CabinetResource {
  
     public static class CabinetResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String cabinetId, CabinetCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String cabinetId, org.dddml.clm.domain.cabinet.CabinetCommand value) {
             String idObj = cabinetId;
             if (value.getCabinetId() == null) {
                 value.setCabinetId(idObj);

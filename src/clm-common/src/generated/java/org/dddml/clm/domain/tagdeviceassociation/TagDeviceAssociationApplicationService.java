@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.List;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.Event;
 import org.dddml.clm.domain.Command;
 

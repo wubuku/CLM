@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagdeviceassociation.hibernate;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;

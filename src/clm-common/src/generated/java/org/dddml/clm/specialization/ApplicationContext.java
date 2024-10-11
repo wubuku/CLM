@@ -70,6 +70,10 @@ public class ApplicationContext {
         public Object now(Class type) {
             if (type.equals(java.sql.Timestamp.class)) {
                 return new java.sql.Timestamp(new java.util.Date().getTime());
+            } else if (type.equals(java.time.OffsetDateTime.class)) {
+                return java.time.OffsetDateTime.now();
+            } else if (type.equals(java.time.ZonedDateTime.class)) {
+                return java.time.ZonedDateTime.now();
             } else if (type.equals(java.util.Date.class)) {
                 return new java.util.Date();
             } else if (type.equals(Long.class)) {

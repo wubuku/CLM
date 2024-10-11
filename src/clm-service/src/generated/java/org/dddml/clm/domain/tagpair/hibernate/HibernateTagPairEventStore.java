@@ -8,7 +8,7 @@ package org.dddml.clm.domain.tagpair.hibernate;
 import java.io.Serializable;
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.specialization.hibernate.AbstractHibernateEventStore;
 import org.hibernate.*;

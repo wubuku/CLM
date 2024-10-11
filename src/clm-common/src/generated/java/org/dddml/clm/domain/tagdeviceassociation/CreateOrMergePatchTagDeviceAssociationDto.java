@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.tagdeviceassociation;
 
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 public class CreateOrMergePatchTagDeviceAssociationDto extends AbstractTagDeviceAssociationCommandDto implements TagDeviceAssociationCommand.CreateOrMergePatchTagDeviceAssociation {
 

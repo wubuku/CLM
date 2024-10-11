@@ -74,6 +74,9 @@ public class M {
         clsMap.put("u64", java.math.BigInteger.class);
         clsMap.put("u128", java.math.BigInteger.class);
         clsMap.put("u256", java.math.BigInteger.class);
+        clsMap.put("AsciiString", String.class);
+        clsMap.put("OffsetDateTime", java.time.OffsetDateTime.class);
+        clsMap.put("java.time.OffsetDateTime", java.time.OffsetDateTime.class);
         clsMap.put("blob", java.sql.Blob.class);
         clsMap.put("java.sql.Blob", java.sql.Blob.class);
         clsMap.put("byte-array", byte[].class);
@@ -151,9 +154,9 @@ public class M {
             "Integer",
             "Long",
             "String",
-            "Date",
+            "OffsetDateTime",
             "String",
-            "Date",
+            "OffsetDateTime",
             "Boolean",
             "Boolean",
     };
@@ -242,9 +245,9 @@ public class M {
             "String",
             "Long",
             "String",
-            "Date",
+            "OffsetDateTime",
             "String",
-            "Date",
+            "OffsetDateTime",
             "Boolean",
             "Boolean",
             "String",
@@ -327,9 +330,9 @@ public class M {
             "String",
             "Long",
             "String",
-            "Date",
+            "OffsetDateTime",
             "String",
-            "Date",
+            "OffsetDateTime",
             "Boolean",
             "Boolean",
     };
@@ -410,9 +413,9 @@ public class M {
             "String",
             "Long",
             "String",
-            "Date",
+            "OffsetDateTime",
             "String",
-            "Date",
+            "OffsetDateTime",
             "Boolean",
             "Boolean",
     };
@@ -502,9 +505,9 @@ public class M {
     public static final String[] propertyTypes = new String[] {
             "Long",
             "String",
-            "Date",
+            "OffsetDateTime",
             "String",
-            "Date",
+            "OffsetDateTime",
             "Boolean",
             "Boolean",
             "String",

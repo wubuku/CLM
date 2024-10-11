@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagdeviceassociation;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 
 public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggregate implements TagDeviceAssociationAggregate {
@@ -59,7 +59,7 @@ public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggr
         e.setActive(c.getActive());
         ((AbstractTagDeviceAssociationEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -70,7 +70,7 @@ public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggr
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractTagDeviceAssociationEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggr
         TagDeviceAssociationEvent.TagDeviceAssociationStateDeleted e = newTagDeviceAssociationStateDeleted(stateEventId);
         ((AbstractTagDeviceAssociationEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -91,7 +91,7 @@ public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggr
         TagDeviceAssociationEvent.TagDeviceAssociationStateCreated e = newTagDeviceAssociationStateCreated(stateEventId);
         ((AbstractTagDeviceAssociationEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -100,7 +100,7 @@ public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggr
         TagDeviceAssociationEvent.TagDeviceAssociationStateMergePatched e = newTagDeviceAssociationStateMergePatched(stateEventId);
         ((AbstractTagDeviceAssociationEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -109,7 +109,7 @@ public abstract class AbstractTagDeviceAssociationAggregate extends AbstractAggr
         TagDeviceAssociationEvent.TagDeviceAssociationStateDeleted e = newTagDeviceAssociationStateDeleted(stateEventId);
         ((AbstractTagDeviceAssociationEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 

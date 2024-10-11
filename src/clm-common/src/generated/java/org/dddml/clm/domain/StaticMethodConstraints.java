@@ -9,7 +9,7 @@ import org.dddml.clm.specialization.ReflectUtils;
 import org.dddml.clm.specialization.MutationContext;
 import org.dddml.clm.specialization.VerificationContext;
 import org.dddml.clm.domain.tag.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.domain.tagpair.*;
 import org.dddml.clm.domain.cabinet.*;

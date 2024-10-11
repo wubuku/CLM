@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.device.hibernate;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
@@ -78,7 +78,7 @@ public class HibernateDeviceStateRepository implements DeviceStateRepository {
         DeviceState persistent = getCurrentSession().get(AbstractDeviceState.SimpleDeviceState.class, detached.getDeviceId());
         if (persistent != null) {
             merge(persistent, detached);
-            getCurrentSession().merge(detached);
+            getCurrentSession().save(persistent);
         } else {
             getCurrentSession().save(detached);
         }
@@ -86,7 +86,7 @@ public class HibernateDeviceStateRepository implements DeviceStateRepository {
     }
 
     private void merge(DeviceState persistent, DeviceState detached) {
-        ((DeviceState.MutableDeviceState) detached).setVersion(persistent.getVersion());
+        ((AbstractDeviceState) persistent).merge(detached);
     }
 
 }

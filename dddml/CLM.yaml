@@ -7,9 +7,19 @@ configuration:
   metadata:
     # Disable automatically generating Create, Update, Delete commands for the backend service
     AutoGeneratingCrUDCommandsDisabled: false
+    AlwaysGeneratingEventClobProperties: false
+    AlwaysGeneratingClobEventProperties: false
   java:
     boundedContextPackage: "org.dddml.clm"
     specializationPackage: "org.dddml.clm.specialization"
+    eventProcessing: {}
+    eventLobPropertiesEnabled: true
+    eventLobPropertiesSqlType: json
+    #stateLobPropertiesEnabled: true
+    typeMappings:
+      OffsetDateTime: OffsetDateTime
+    typePackages:
+      OffsetDateTime: java.time
   aggregateEventVersionProperty:
     name: Version
     type: long
@@ -21,14 +31,16 @@ configuration:
     updatedAt: UpdatedAt
     deleted: Deleted
     version: Version
+  defaultUserIdType: string
+  defaultTimestampType: OffsetDateTime
 
 aggregates:
   Tag:
     metadata:
       #PersistingStateEventRemovedPropertiesAsSet: true
       CreationWithoutIdEnabled: true
-      HttpPostCreationEnabled: true
-      GeneratingAbstractIdGenerator: true
+      #HttpPostCreationEnabled: true
+      #GeneratingAbstractIdGenerator: true
     id:
       name: TagId
       type: string

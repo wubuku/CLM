@@ -7,7 +7,7 @@ package org.dddml.clm.domain.device;
 
 import java.util.*;
 import java.math.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.Event;
 
@@ -27,11 +27,11 @@ public interface DeviceState
 
     String getCreatedBy();
 
-    Date getCreatedAt();
+    OffsetDateTime getCreatedAt();
 
     String getUpdatedBy();
 
-    Date getUpdatedAt();
+    OffsetDateTime getUpdatedAt();
 
     Boolean getActive();
 
@@ -48,11 +48,11 @@ public interface DeviceState
 
         void setCreatedBy(String createdBy);
 
-        void setCreatedAt(Date createdAt);
+        void setCreatedAt(OffsetDateTime createdAt);
 
         void setUpdatedBy(String updatedBy);
 
-        void setUpdatedAt(Date updatedAt);
+        void setUpdatedAt(OffsetDateTime updatedAt);
 
         void setActive(Boolean active);
 

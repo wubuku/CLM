@@ -7,7 +7,7 @@ package org.dddml.clm.domain.device;
 
 import java.util.*;
 import java.math.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.device.DeviceEvent.*;
@@ -64,13 +64,13 @@ public abstract class AbstractDeviceState implements DeviceState.SqlDeviceState 
         this.createdBy = createdBy;
     }
 
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 
-    public Date getCreatedAt() {
+    public OffsetDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -84,13 +84,13 @@ public abstract class AbstractDeviceState implements DeviceState.SqlDeviceState 
         this.updatedBy = updatedBy;
     }
 
-    private Date updatedAt;
+    private OffsetDateTime updatedAt;
 
-    public Date getUpdatedAt() {
+    public OffsetDateTime getUpdatedAt() {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -201,7 +201,7 @@ public abstract class AbstractDeviceState implements DeviceState.SqlDeviceState 
 
     }
 
-    protected void merge(DeviceState s) {
+    public void merge(DeviceState s) {
         if (s == this) {
             return;
         }

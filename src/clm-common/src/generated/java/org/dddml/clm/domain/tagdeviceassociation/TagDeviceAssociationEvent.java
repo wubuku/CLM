@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagdeviceassociation;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.Event;
 
 public interface TagDeviceAssociationEvent extends Event {
@@ -32,9 +32,9 @@ public interface TagDeviceAssociationEvent extends Event {
 
     void setCreatedBy(String createdBy);
 
-    Date getCreatedAt();
+    OffsetDateTime getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
+    void setCreatedAt(OffsetDateTime createdAt);
 
     String getCommandId();
 

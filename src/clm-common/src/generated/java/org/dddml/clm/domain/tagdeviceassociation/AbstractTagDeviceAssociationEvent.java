@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagdeviceassociation;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.AbstractEvent;
 
@@ -54,13 +54,13 @@ public abstract class AbstractTagDeviceAssociationEvent extends AbstractEvent im
         this.createdBy = createdBy;
     }
 
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 
-    public Date getCreatedAt() {
+    public OffsetDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -75,6 +75,16 @@ public abstract class AbstractTagDeviceAssociationEvent extends AbstractEvent im
         this.commandId = commandId;
     }
 
+    private String commandType;
+
+    public String getCommandType() {
+        return commandType;
+    }
+
+    public void setCommandType(String commandType) {
+        this.commandType = commandType;
+    }
+
     protected AbstractTagDeviceAssociationEvent() {
     }
 
@@ -84,6 +94,28 @@ public abstract class AbstractTagDeviceAssociationEvent extends AbstractEvent im
 
 
     public abstract String getEventType();
+
+    public static class TagDeviceAssociationLobEvent extends AbstractTagDeviceAssociationEvent {
+
+        public Map<String, Object> getDynamicProperties() {
+            return dynamicProperties;
+        }
+
+        public void setDynamicProperties(Map<String, Object> dynamicProperties) {
+            if (dynamicProperties == null) {
+                throw new IllegalArgumentException("dynamicProperties is null.");
+            }
+            this.dynamicProperties = dynamicProperties;
+        }
+
+        private Map<String, Object> dynamicProperties = new HashMap<>();
+
+        @Override
+        public String getEventType() {
+            return "TagDeviceAssociationLobEvent";
+        }
+
+    }
 
 
     public static abstract class AbstractTagDeviceAssociationStateEvent extends AbstractTagDeviceAssociationEvent implements TagDeviceAssociationEvent.TagDeviceAssociationStateEvent {

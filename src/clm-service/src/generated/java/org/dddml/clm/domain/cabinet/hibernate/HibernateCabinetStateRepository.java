@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.cabinet.hibernate;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;
@@ -78,7 +78,7 @@ public class HibernateCabinetStateRepository implements CabinetStateRepository {
         CabinetState persistent = getCurrentSession().get(AbstractCabinetState.SimpleCabinetState.class, detached.getCabinetId());
         if (persistent != null) {
             merge(persistent, detached);
-            getCurrentSession().merge(detached);
+            getCurrentSession().save(persistent);
         } else {
             getCurrentSession().save(detached);
         }
@@ -86,7 +86,7 @@ public class HibernateCabinetStateRepository implements CabinetStateRepository {
     }
 
     private void merge(CabinetState persistent, CabinetState detached) {
-        ((CabinetState.MutableCabinetState) detached).setVersion(persistent.getVersion());
+        ((AbstractCabinetState) persistent).merge(detached);
     }
 
 }

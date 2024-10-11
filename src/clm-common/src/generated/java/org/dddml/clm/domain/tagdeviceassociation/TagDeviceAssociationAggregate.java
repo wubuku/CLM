@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagdeviceassociation;
 
 import java.util.List;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.Event;
 import org.dddml.clm.domain.Command;
 

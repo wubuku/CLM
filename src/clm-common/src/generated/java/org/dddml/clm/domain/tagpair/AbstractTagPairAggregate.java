@@ -7,7 +7,7 @@ package org.dddml.clm.domain.tagpair;
 
 import java.util.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 
 public abstract class AbstractTagPairAggregate extends AbstractAggregate implements TagPairAggregate {
@@ -60,7 +60,7 @@ public abstract class AbstractTagPairAggregate extends AbstractAggregate impleme
         e.setActive(c.getActive());
         ((AbstractTagPairEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -73,7 +73,7 @@ public abstract class AbstractTagPairAggregate extends AbstractAggregate impleme
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractTagPairEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -82,7 +82,7 @@ public abstract class AbstractTagPairAggregate extends AbstractAggregate impleme
         TagPairEvent.TagPairStateDeleted e = newTagPairStateDeleted(stateEventId);
         ((AbstractTagPairEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -94,7 +94,7 @@ public abstract class AbstractTagPairAggregate extends AbstractAggregate impleme
         TagPairEvent.TagPairStateCreated e = newTagPairStateCreated(stateEventId);
         ((AbstractTagPairEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -103,7 +103,7 @@ public abstract class AbstractTagPairAggregate extends AbstractAggregate impleme
         TagPairEvent.TagPairStateMergePatched e = newTagPairStateMergePatched(stateEventId);
         ((AbstractTagPairEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -112,7 +112,7 @@ public abstract class AbstractTagPairAggregate extends AbstractAggregate impleme
         TagPairEvent.TagPairStateDeleted e = newTagPairStateDeleted(stateEventId);
         ((AbstractTagPairEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 

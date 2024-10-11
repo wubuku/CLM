@@ -5,7 +5,7 @@
 
 package org.dddml.clm.domain.device;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 
 public class CreateOrMergePatchDeviceDto extends AbstractDeviceCommandDto implements DeviceCommand.CreateOrMergePatchDevice {

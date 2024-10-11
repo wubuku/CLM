@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.device;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.Event;
 
@@ -32,9 +32,9 @@ public interface DeviceEvent extends Event {
 
     void setCreatedBy(String createdBy);
 
-    Date getCreatedAt();
+    OffsetDateTime getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
+    void setCreatedAt(OffsetDateTime createdAt);
 
     String getCommandId();
 

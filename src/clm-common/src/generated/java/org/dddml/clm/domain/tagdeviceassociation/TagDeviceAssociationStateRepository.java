@@ -8,7 +8,7 @@ package org.dddml.clm.domain.tagdeviceassociation;
 import java.util.*;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 public interface TagDeviceAssociationStateRepository {
     TagDeviceAssociationState get(TagDeviceAssociationId id, boolean nullAllowed);

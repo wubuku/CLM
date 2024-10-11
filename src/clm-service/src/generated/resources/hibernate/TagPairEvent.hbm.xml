@@ -17,6 +17,15 @@
     <property name="createdBy" column="created_by" />
     <property name="createdAt" column="created_at" />
     <property name="commandId" column="command_id" />
+    <property name="commandType" column="command_type" length="50" />
+    <subclass name="AbstractTagPairEvent$TagPairLobEvent" discriminator-value="TagPairLobEvent">
+      <property name="dynamicProperties">
+        <column name="dynamic_properties" sql-type="json" />
+        <type name="io.hypersistence.utils.hibernate.type.json.JsonType">
+          <param name="org.hibernate.type.ParameterType">java.util.HashMap</param>
+        </type>
+      </property>
+    </subclass>
     <subclass name="AbstractTagPairEvent$AbstractTagPairStateEvent" abstract="true">
       <property name="description">
         <column name="description" length="255" />

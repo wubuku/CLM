@@ -20,6 +20,15 @@
     <property name="createdBy" column="created_by" />
     <property name="createdAt" column="created_at" />
     <property name="commandId" column="command_id" />
+    <property name="commandType" column="command_type" length="50" />
+    <subclass name="AbstractTagDeviceAssociationEvent$TagDeviceAssociationLobEvent" discriminator-value="TagDeviceAssociationLobEvent">
+      <property name="dynamicProperties">
+        <column name="dynamic_properties" sql-type="json" />
+        <type name="io.hypersistence.utils.hibernate.type.json.JsonType">
+          <param name="org.hibernate.type.ParameterType">java.util.HashMap</param>
+        </type>
+      </property>
+    </subclass>
     <subclass name="AbstractTagDeviceAssociationEvent$AbstractTagDeviceAssociationStateEvent" abstract="true">
       <property name="active">
         <column name="active" />

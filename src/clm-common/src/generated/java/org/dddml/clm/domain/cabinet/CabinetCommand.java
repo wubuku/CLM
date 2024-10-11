@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.cabinet;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.domain.Command;
 import org.dddml.clm.specialization.DomainError;

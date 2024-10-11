@@ -8,7 +8,7 @@ package org.dddml.clm.domain.tagpair;
 import java.util.*;
 import org.dddml.support.criterion.Criterion;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 public interface TagPairStateRepository {
     TagPairState get(TagIdPair id, boolean nullAllowed);

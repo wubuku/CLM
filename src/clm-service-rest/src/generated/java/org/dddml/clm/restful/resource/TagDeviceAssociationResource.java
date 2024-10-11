@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.dddml.support.criterion.*;
 import org.dddml.clm.domain.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.tagdeviceassociation.*;
 import static org.dddml.clm.domain.meta.M.*;
@@ -325,7 +325,7 @@ public class TagDeviceAssociationResource {
             return formatter.parse(idString);
         }
 
-        public static void setNullIdOrThrowOnInconsistentIds(String tagDeviceAssociationId, TagDeviceAssociationCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String tagDeviceAssociationId, org.dddml.clm.domain.tagdeviceassociation.TagDeviceAssociationCommand value) {
             TagDeviceAssociationId idObj = parseIdString(tagDeviceAssociationId);
             if (value.getTagDeviceAssociationId() == null) {
                 value.setTagDeviceAssociationId(idObj);

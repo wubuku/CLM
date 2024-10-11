@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.cabinet.hibernate;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.hibernate.Session;
 import org.hibernate.Criteria;

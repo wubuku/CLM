@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.dddml.support.criterion.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.*;
 import org.dddml.clm.domain.tag.*;
@@ -316,7 +316,7 @@ public class TagResource {
  
     public static class TagResourceUtils {
 
-        public static void setNullIdOrThrowOnInconsistentIds(String tagId, TagCommand value) {
+        public static void setNullIdOrThrowOnInconsistentIds(String tagId, org.dddml.clm.domain.tag.TagCommand value) {
             String idObj = tagId;
             if (value.getTagId() == null) {
                 value.setTagId(idObj);

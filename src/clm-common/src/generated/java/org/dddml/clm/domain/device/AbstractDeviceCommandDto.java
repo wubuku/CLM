@@ -5,7 +5,7 @@
 
 package org.dddml.clm.domain.device;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.domain.AbstractCommand;
 

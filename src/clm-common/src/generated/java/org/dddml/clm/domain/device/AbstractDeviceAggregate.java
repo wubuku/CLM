@@ -6,7 +6,7 @@
 package org.dddml.clm.domain.device;
 
 import java.util.*;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import org.dddml.clm.domain.*;
 import org.dddml.clm.specialization.*;
 
@@ -61,7 +61,7 @@ public abstract class AbstractDeviceAggregate extends AbstractAggregate implemen
         e.setActive(c.getActive());
         ((AbstractDeviceEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -76,7 +76,7 @@ public abstract class AbstractDeviceAggregate extends AbstractAggregate implemen
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractDeviceEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -85,7 +85,7 @@ public abstract class AbstractDeviceAggregate extends AbstractAggregate implemen
         DeviceEvent.DeviceStateDeleted e = newDeviceStateDeleted(stateEventId);
         ((AbstractDeviceEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -97,7 +97,7 @@ public abstract class AbstractDeviceAggregate extends AbstractAggregate implemen
         DeviceEvent.DeviceStateCreated e = newDeviceStateCreated(stateEventId);
         ((AbstractDeviceEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -106,7 +106,7 @@ public abstract class AbstractDeviceAggregate extends AbstractAggregate implemen
         DeviceEvent.DeviceStateMergePatched e = newDeviceStateMergePatched(stateEventId);
         ((AbstractDeviceEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
@@ -115,7 +115,7 @@ public abstract class AbstractDeviceAggregate extends AbstractAggregate implemen
         DeviceEvent.DeviceStateDeleted e = newDeviceStateDeleted(stateEventId);
         ((AbstractDeviceEvent)e).setCommandId(commandId);
         e.setCreatedBy(requesterId);
-        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        e.setCreatedAt((OffsetDateTime)ApplicationContext.current.getTimestampService().now(OffsetDateTime.class));
         return e;
     }
 
