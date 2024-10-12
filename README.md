@@ -90,6 +90,10 @@ If there is no unexpected failure, the compilation should be successful.
 
 ### Creating and Initialize Database
 
+注意，下面我们假设使用的数据库名称是 `clm`。
+但是在代码刚生成的时候，数据库名称可能并不是 `clm`，而可能是 `test2` 之类。
+请搜索代码/配置文件中的数据库连接字符串，并修改为你想要的名称。
+
 Use a MySQL client to connect to the local MySQL server and execute the following script to create an empty database (assuming the name is `clm`):
 
 ```sql
@@ -110,14 +114,33 @@ java -jar ./clm-service-cli/target/clm-service-cli-0.0.1-SNAPSHOT.jar ddl -d "./
 
 ### Running the Service
 
-
 In the `src` directory, run the following command to start the restful service:
 
 ```shell
 mvn -pl clm-service-rest -am spring-boot:run
 ```
 
-Swagger document:
+注意，这时候你可能会碰到执行错误。因为我们在模型中是这样定义 `Tag` 实体（聚合根）的：
+
+```yaml
+  Tag:
+    metadata:
+      CreationWithoutIdEnabled: true
+```
+
+这意味着，这个实体的 ID 不是由外部提供的，而是在服务端生成的。因为我们没有在数据访问层指定这个 ID 的生成策略，那么就意味着我们需要在应用层实现这个逻辑。
+
+#### 实现病注入需要的 Id Generator bean
+
+生成 Tag 实体的 ID 的实现请参考 `src/clm-service/src/main/java/org/dddml/clm/tag/TagIdGenerator.java` 文件。
+
+然后参考 `src/clm-service/src/main/java/org/dddml/clm/config/IdGeneratorConfig.java` 文件，注入这个 bean，让应用的其他部分（即需要生成 Tag ID 的地方）能够使用它。
+
+重新运行服务，应该就不会有错误了。
+
+---
+
+在服务运行起来之后，可以在这个地方找到 Swagger 在线文档：
 
 ```text
 http://localhost:1023/api/swagger-ui/index.html
