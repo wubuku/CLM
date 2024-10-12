@@ -130,17 +130,22 @@ mvn -pl clm-service-rest -am spring-boot:run
 
 这意味着，这个实体的 ID 不是由外部提供的，而是在服务端生成的。因为我们没有在数据访问层指定这个 ID 的生成策略，那么就意味着我们需要在应用层实现这个逻辑。
 
-#### 实现病注入需要的 Id Generator bean
+
+#### 实现并注入需要的 Id Generator bean
 
 生成 Tag 实体的 ID 的实现请参考 `src/clm-service/src/main/java/org/dddml/clm/tag/TagIdGenerator.java` 文件。
 
 然后参考 `src/clm-service/src/main/java/org/dddml/clm/config/IdGeneratorConfig.java` 文件，注入这个 bean，让应用的其他部分（即需要生成 Tag ID 的地方）能够使用它。
 
-重新运行服务，应该就不会有错误了。
+重新运行服务，应该就不会有错误了：
 
----
+```shell
+mvn -pl clm-service-rest -am spring-boot:run
+```
 
-在服务运行起来之后，可以在这个地方找到 Swagger 在线文档：
+#### 文档
+
+在服务运行起来之后，可以在这个地方找到 Swagger 在线文档（假设服务的端口是 1023）：
 
 ```text
 http://localhost:1023/api/swagger-ui/index.html
