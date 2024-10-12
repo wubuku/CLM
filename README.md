@@ -35,7 +35,7 @@ sudo docker run -p 3306:3306 --name mysql \
 
 ### Write DDDML Model File
 
-In the `dddml` directory in the root of the repository, we have a `CLM.yaml` file. This is the DDDML model file.
+In the [`dddml`](dddml) directory in the root of the repository, we have a [`CLM.yaml`](dddml/CLM.yaml) file. This is the DDDML model file.
 
 
 ### Run dddappp Project Creation Tool
@@ -133,9 +133,9 @@ mvn -pl clm-service-rest -am spring-boot:run
 
 #### 实现并注入需要的 Id Generator bean
 
-生成 Tag 实体的 ID 的实现请参考 `src/clm-service/src/main/java/org/dddml/clm/tag/TagIdGenerator.java` 文件。
+生成 Tag 实体的 ID 的实现请参考 [`src/clm-service/src/main/java/org/dddml/clm/tag/TagIdGenerator.java`](src/clm-service/src/main/java/org/dddml/clm/tag/TagIdGenerator.java) 文件。
 
-然后参考 `src/clm-service/src/main/java/org/dddml/clm/config/IdGeneratorConfig.java` 文件，注入这个 bean，让应用的其他部分（即需要生成 Tag ID 的地方）能够使用它。
+然后参考 [`src/clm-service/src/main/java/org/dddml/clm/config/IdGeneratorConfig.java`](src/clm-service/src/main/java/org/dddml/clm/config/IdGeneratorConfig.java) 文件，注入这个 bean，让应用的其他部分（即需要生成 Tag ID 的地方）能够使用它。
 
 重新运行服务，应该就不会有错误了：
 
@@ -168,9 +168,11 @@ curl -X POST "http://localhost:1023/api/Cabinets" -H "accept: application/json" 
 
 关于 DDDML 的入门介绍：["Introducing DDDML: The Key to Low-Code Development for Decentralized Applications"](https://github.com/wubuku/Dapp-LCDP-Demo/blob/main/IntroducingDDDML.md).
 
+
 ### 面向 MUD 开发者的 DDDML 介绍
 
 如果你想要基于 EVM，特别是 [MUD](https://mud.dev) 框架，开发去中心化应用，可能从这个入门介绍开始了解 DDDML 会更合适：https://github.com/wubuku/Dapp-LCDP-Demo/blob/main/docs/IntroToDDDMLforMudDevelopers_CN.md
+
 
 ### DDDML x AI
 
@@ -178,11 +180,17 @@ AI 辅助开发基于 EVM/MUD 的去中心化应用：https://github.com/wubuku/
 
 AI 辅助开发 AO 去中心化应用：https://github.com/dddappp/AI-Assisted-AO-Dapp-Example/blob/main/README_CN.md
 
+
 ### 将 dddappp 作为全链游戏引擎使用
 
 #### 使用 dddappp 开发 Sui 全链游戏
 
-这个一个生产级的实际案例：https://github.com/wubuku/infinite-sea
+这个一个生产级的实际案例。我们使用几乎一样的模型，驱动开发了 Infinite Seas 游戏的三个不同版本：
+
+* Sui 版本：https://github.com/wubuku/infinite-seas
+* Aptos 版本：https://github.com/wubuku/aptos-infinite-seas
+* EVM 版本：https://github.com/wubuku/hello-mud
+
 
 #### 用于开发 Aptos 全链游戏的示例
 
