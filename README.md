@@ -30,7 +30,26 @@ sudo docker run -p 3306:3306 --name mysql \
 > About DDDML, here is an introductory article: ["Introducing DDDML: The Key to Low-Code Development for Decentralized Applications"](https://github.com/wubuku/Dapp-LCDP-Demo/blob/main/IntroducingDDDML.md). 
 
 
+
+## Programming
+
+### Write DDDML Model File
+
+In the `dddml` directory in the root of the repository, we have a `CLM.yaml` file. This is the DDDML model file.
+
+
 ### Run dddappp Project Creation Tool
+
+
+> **Hint**
+>
+> Sometimes you may need to remove old containers and images, ensure you are using the latest image:
+>
+> ```shell
+> docker rm $(docker ps -aq --filter "ancestor=wubuku/dddappp-java:master")
+> docker rmi wubuku/dddappp-java:master
+> ```
+
 
 In repository root directory, run:
 
@@ -56,6 +75,7 @@ The command parameters above are straightforward:
 * `javaProjectNamePrefix` is the name prefix of each module of the service. It is recommended to use an all-lowercase name.
 * `pomGroupId` is the GroupId of the service. We use Maven as the project management tool for service. It should be all lowercase and the parts should be separated by dots.
 
+
 Now you can try to compile the service. Go to the directory `src` and run:
 
 ```shell
@@ -64,12 +84,6 @@ mvn compile
 
 If there is no unexpected failure, the compilation should be successful.
 
-
-## Programming
-
-### Write DDDML Model File
-
-In the `dddml` directory in the root of the repository, we have a `CLM.yaml` file. This is the DDDML model file.
 
 
 ## Test the Application
